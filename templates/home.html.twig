@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+{% block title %}Home!{% endblock %}
+{% block body %}
+<div class="list">
+{% for oneProduct in product %}
+        <a href="/product/{{oneProduct.id}}" class="product" style="opacity: {{ oneProduct.status.value == 'Non Disponible' ? 0.5 : 1}};">
+            <div class="product-image backgroundImage" style="background-image: url('{{ oneProduct.image.url }}');">
+            </div>
+            <p>{{oneProduct.brand.name}}</p>
+            <p>{{oneProduct.name}}</p>
+            <p>{{oneProduct.price}} €</p>
+        </a>
+{% endfor %}
+</div>
+{% endblock %}
