@@ -15,8 +15,13 @@ class CategoryFixtures extends Fixture
             $category->setName("Homme");
             $manager->persist($category);
 
-            $category->setName("Femme");
-            $manager->persist($category);
+            $category2 = new Category();
+            $category2->setName("Femme");
+            $manager->persist($category2);
+
+            $category3 = new Category();
+            $category3->setName("Mixte");
+            $manager->persist($category3);
 
         $manager->flush();
     }

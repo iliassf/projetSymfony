@@ -1,20 +1,72 @@
 {% extends 'base.html.twig' %}
-
-{% block title %}Hello DashboardController!{% endblock %}
+{% block title %}Tableau de Bord{% endblock %}
+{% block header %}{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+<div class="p-4">
+    <a href="/logout">Deconnexion</a>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>/Users/iliass/Desktop/symfony/projet/src/Controller/DashboardController.php</code></li>
-        <li>Your template at <code>/Users/iliass/Desktop/symfony/projet/templates/dashboard/index.html.twig</code></li>
-    </ul>
+    <div class="p-3 border mt-4 rounded">
+        <h3>Statistiques :</h3>
+        <div class="d-flex gap-4 my-5 justify-content-center">
+        <ul class="list-group w-25">
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                Nombre par catégories:
+            </li>
+            {% for category in productsByCategory %}
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    {{ category.category }}
+                    <span class="badge bg-dark">{{ category.productCount }}</span>
+                </li>
+            {% endfor %}
+        </ul>
+        <ul class="list-group w-25">
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                Ratio par status:
+            </li>
+            {% for status in productsByStatus %}
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    {{ status.status.value }}
+                    <span class="badge bg-dark">{{ status.proportion|round(1,'common') }} %</span>
+                </li>
+            {% endfor %}
+        </ul>
+        <ul class="list-group w-25">
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                Gain durant les 12 derniers mois:
+            </li>
+            {% for amount in totalAmountByMonth %}
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    {{ amount.month }}
+                    <span class="badge bg-dark">{{ amount.totalAmount }} €</span>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+            <table class="table table-striped">
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Reference</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for key, order in fiveLatestOrder %}
+                    <tr>
+                        <th scope="row">{{key + 1}}</th>
+                        <td>{{order.reference}}</td>
+                        <td>{{order.createdAt|date('d/m/Y')}}</td>
+                        <td>{{order.status.value}}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
 </div>
 {% endblock %}
+
+{% block footer %}{% endblock %}

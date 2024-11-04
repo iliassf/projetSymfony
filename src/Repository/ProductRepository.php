@@ -15,6 +15,32 @@ class ProductRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Product::class);
     }
+    
+    public function countProductsByCategory(): array
+    {
+        return $this->createQueryBuilder('p')
+            ->select('c.name as category', 'COUNT(p.id) as productCount')
+            ->join('p.category', 'c')
+            ->groupBy('c.id')
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function countProductsByStatus(): array
+    {
+        $totalProducts = $this->createQueryBuilder('p')
+        ->select('COUNT(p.id)')
+        ->getQuery()
+        ->getSingleScalarResult();
+
+        return $this->createQueryBuilder('p')
+            ->select('p.status as status', '(COUNT(p.id) * 100 / :total) as proportion')
+            ->groupBy('status')
+            ->setParameter('total', $totalProducts)
+            ->getQuery()
+            ->getResult();
+    }
+
 
 //    /**
 //     * @return Product[] Returns an array of Product objects

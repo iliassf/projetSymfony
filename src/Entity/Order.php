@@ -25,7 +25,7 @@ class Order
     private ?\DateTimeImmutable $createdAt = null;
 
     #[ORM\Column(length: 255,enumType: Step::class)]
-    private ?string $status = null;
+    private Step $status;
 
     #[ORM\ManyToOne(inversedBy: 'orders')]
     #[ORM\JoinColumn(nullable: false)]
@@ -78,12 +78,12 @@ class Order
         return $this;
     }
 
-    public function getStatus(): ?string
+    public function getStatus(): Step
     {
         return $this->status;
     }
 
-    public function setStatus(string $status): static
+    public function setStatus(Step $status): static
     {
         $this->status = $status;
 

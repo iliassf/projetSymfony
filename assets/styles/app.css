@@ -3,51 +3,6 @@ body {
   font-family: Arial, sans-serif;
 }
 
-/*********************** HEADER *****************************/
-header {
-  background-color: rgb(255, 227, 232);
-  display: flex;
-  text-align: center;
-  align-items: center;
-  width: 100vw;
-}
-
-header p {
-  font-size: large;
-  font-weight: bold;
-  margin-left: 20px;
-}
-
-header ul {
-  display: flex;
-  list-style-type: none;
-}
-
-header li {
-  margin: 0 8px;
-  padding: 10px 0;
-  border-bottom: solid 2px transparent;
-}
-
-header li:hover {
-  border-bottom: solid 2px black;
-}
-
-header li a {
-  text-decoration: none;
-  color: black;
-}
-/*********************** FOOTER *****************************/
-
-footer {
-  width: 100%;
-  height: 15vh;
-  border-top: 1px solid black;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 /*********************** PRODUCT *****************************/
 
 .product {
@@ -87,44 +42,6 @@ footer {
 
 .information .backgroundImage {
   min-width: 40vw;
-}
-
-.information button {
-  background-color: #ea4c89;
-  border-radius: 8px;
-  border-style: none;
-  box-sizing: border-box;
-  color: #ffffff;
-  cursor: pointer;
-  display: flex;
-  font-size: 14px;
-  font-weight: 500;
-  height: 40px;
-  line-height: 20px;
-  list-style: none;
-  margin: 0;
-  outline: none;
-  padding: 10px 16px;
-  position: relative;
-  text-align: center;
-  text-decoration: none;
-  transition: color 100ms;
-  vertical-align: baseline;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  width: 40%;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.information button:hover,
-.information button:focus {
-  background-color: #f082ac;
-}
-
-.information button:hover {
-  cursor: pointer;
 }
 
 .description {
@@ -189,4 +106,13 @@ footer {
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
+}
+
+.btn-primary,
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary:visited,
+.btn-primary:focus {
+  background-color: rgb(255, 130, 151) !important;
+  border-color: rgb(255, 130, 151) !important;
 }

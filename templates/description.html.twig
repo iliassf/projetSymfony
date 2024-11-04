@@ -5,7 +5,7 @@
     <div class="backgroundImage" style="background-image: url('{{ product.image.url }}');"></div>
     <div>
         <h1>{{product.name}}</h1>
-        <p>Parfum pour <b class="importantInfo">{{product.category.name}}</b></p>
+        <p>Parfum <b class="importantInfo">{{product.category.name}}</b></p>
         <div class="description">
             <input type="checkbox" class="toggle-description" id="toggle-{{ product.id }}">
 
@@ -18,10 +18,10 @@
         </div>
         <p>Quantité en stock : <b class="importantInfo">{{product.stock}}</b></p>
         <p>Status : <b class="importantInfo">{{product.status.value}}</b></p>
-        {% if product.status.value != "Non Disponible" %}
-            <button>
-                <p>Commander</p>
-                <p>{{product.price}} €</p>
+        {% if (product.status.value != "Non Disponible" and is_granted("ROLE_USER"))%}
+            <button type="button" class="btn btn-secondary d-flex gap-5">
+                <div>Commander</div>
+                <div class="p-0">{{product.price}} €</div>
             </button>
         {% endif %}
     </div>

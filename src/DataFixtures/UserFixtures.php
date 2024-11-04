@@ -43,6 +43,8 @@ class UserFixtures extends Fixture
         
         $manager->persist($user);
 
+        $this->addReference('user_admin', $user);
+
         $user2 = new User();
         $user2->setEmail('test@gmail.com');
         $user2->setFirstName("Vincent");
@@ -61,6 +63,8 @@ class UserFixtures extends Fixture
         $user2->setAddress($address2);
         
         $manager->persist($user2);
+
+        $this->addReference('user_test', $user2);
 
         $manager->flush();
     }

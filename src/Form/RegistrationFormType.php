@@ -19,14 +19,14 @@ class RegistrationFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('email')
-            ->add('firstName')
-            ->add('lastName')
+            ->add('email',null,['attr' => ['class' => 'form-control']])
+            ->add('firstName',null,['attr' => ['class' => 'form-control']])
+            ->add('lastName',null,['attr' => ['class' => 'form-control']])
             ->add('plainPassword', PasswordType::class, [
                 // instead of being set onto the object directly,
                 // this is read and encoded in the controller
                 'mapped' => false,
-                'attr' => ['autocomplete' => 'new-password'],
+                'attr' => ['autocomplete' => 'new-password','class' => 'form-control'],
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Please enter a password',
@@ -39,7 +39,7 @@ class RegistrationFormType extends AbstractType
                     ]),
                 ],
             ])
-            ->add("address", AddressType::class,["label"=>"Information de l'adresse"])
+            ->add("address", AddressType::class,["label"=>false])
             ->add('agreeTerms', CheckboxType::class, [
                 'mapped' => false,
                 'constraints' => [
@@ -47,8 +47,9 @@ class RegistrationFormType extends AbstractType
                         'message' => 'You should agree to our terms.',
                     ]),
                 ],
+                'attr'=>['class'=>'my-4']
             ])
-            ->add("save",SubmitType::class,["label"=>"s'enregistrer"])
+            ->add("save",SubmitType::class,["label"=>"s'enregistrer",'attr' => ['class' => 'btn btn-lg btn-primary']])
         ;
     }
 
