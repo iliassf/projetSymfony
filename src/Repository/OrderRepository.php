@@ -15,7 +15,6 @@ class OrderRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Order::class);
     }
-
     public function fiveLatestOrder():array
     {
         return $this->createQueryBuilder('p')

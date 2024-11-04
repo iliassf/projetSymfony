@@ -1,18 +1,35 @@
 {% extends 'base.html.twig' %}
 {% block title %}Tableau de Bord{% endblock %}
-{% block header %}{% endblock %}
+{% block header %}
+<nav class="navbar navbar-expand-lg navbar-light bg-light pe-3">
+  <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarNav">
+    <ul class="navbar-nav">
+        <li class="nav-item active">
+            <a class="nav-link" href="/dashboard">Accueil</a>
+        </li>
+        <li class="nav-item active">
+            <a class="nav-link" href="/user">Voir les utilisateurs</a>
+        </li>
+        <li class="nav-item active">
+            <a class="nav-link" href="/dashboard">Gerer les parfums</a>
+        </li>
+        <li class="nav-item active">
+            <a class="nav-link" href="/order">Voir les commandes</a>
+        </li>
+    </ul>
+    <span class="navbar-text"><a class="nav-link" href="/logout">Deconnexion</a></span>
+  </div>
+</nav>
+{% endblock %}
 
 {% block body %}
 <div class="p-4">
-    <a href="/logout">Deconnexion</a>
-
-
-    <div class="p-3 border mt-4 rounded">
+    <div class="p-3 border mt-3 rounded">
         <h3>Statistiques :</h3>
         <div class="d-flex gap-4 my-5 justify-content-center">
-        <ul class="list-group w-25">
+        <ul class="list-group w-30">
             <li class="list-group-item d-flex justify-content-between align-items-center">
-                Nombre par catégories:
+                Nombre de parfums par catégories:
             </li>
             {% for category in productsByCategory %}
                 <li class="list-group-item d-flex justify-content-between align-items-center">
@@ -32,19 +49,33 @@
                 </li>
             {% endfor %}
         </ul>
-        <ul class="list-group w-25">
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-                Gain durant les 12 derniers mois:
-            </li>
-            {% for amount in totalAmountByMonth %}
-                <li class="list-group-item d-flex justify-content-between align-items-center">
-                    {{ amount.month }}
-                    <span class="badge bg-dark">{{ amount.totalAmount }} €</span>
-                </li>
-            {% endfor %}
-        </ul>
     </div>
-            <table class="table table-striped">
+    <div >
+        <p>Gains durant les 12 derniers mois :</p>
+        <table class="table table-striped">
+            <thead class="table-dark">
+                <tr>
+                    {% for amount in totalAmountByMonth %}
+                        <th scope="col">
+                            {{ amount.month }}
+                        </th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                    <tr>
+                        {% for amount in totalAmountByMonth %}
+                            <th scope="col">
+                                {{ amount.totalAmount }} €
+                            </th>
+                        {% endfor %}
+                    </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="pt-3">
+        <p>5 dernieres commandes :</p>
+        <table class="table table-striped">
             <thead class="table-dark">
                 <tr>
                     <th scope="col">#</th>
@@ -65,7 +96,7 @@
             </tbody>
         </table>
     </div>
-
+    </div>
 </div>
 {% endblock %}
 

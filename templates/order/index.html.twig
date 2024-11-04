@@ -1,0 +1,28 @@
+{% extends 'dashboard/index.html.twig' %}
+
+{% block title %}Visualiser les commandes{% endblock %}
+
+{% block body %}
+<div class="m-5 px-5">
+        <table class="table table-striped">
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Reference</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for key, order in orders %}
+                    <tr>
+                        <th scope="row">{{key + 1}}</th>
+                        <td>{{order.reference}}</td>
+                        <td>{{order.createdAt|date('d/m/Y')}}</td>
+                        <td>{{order.status.value}}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+</div>
+{% endblock %}
