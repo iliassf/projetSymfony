@@ -11,10 +11,10 @@
             <a class="nav-link" href="/user">Voir les utilisateurs</a>
         </li>
         <li class="nav-item active">
-            <a class="nav-link" href="/dashboard">Gerer les parfums</a>
+            <a class="nav-link" href="/order">Voir les commandes</a>
         </li>
         <li class="nav-item active">
-            <a class="nav-link" href="/order">Voir les commandes</a>
+            <a class="nav-link" href="/manageProduct">Gerer les parfums</a>
         </li>
     </ul>
     <span class="navbar-text"><a class="nav-link" href="/logout">Deconnexion</a></span>
@@ -29,7 +29,7 @@
         <div class="d-flex gap-4 my-5 justify-content-center">
         <ul class="list-group w-30">
             <li class="list-group-item d-flex justify-content-between align-items-center">
-                Nombre de parfums par catégories:
+                <b class="importantInfo">Nombre de parfums par catégories:</b>
             </li>
             {% for category in productsByCategory %}
                 <li class="list-group-item d-flex justify-content-between align-items-center">
@@ -40,7 +40,7 @@
         </ul>
         <ul class="list-group w-25">
             <li class="list-group-item d-flex justify-content-between align-items-center">
-                Ratio par status:
+                <b class="importantInfo">Ratio par status:</b>
             </li>
             {% for status in productsByStatus %}
                 <li class="list-group-item d-flex justify-content-between align-items-center">
@@ -51,7 +51,7 @@
         </ul>
     </div>
     <div >
-        <p>Gains durant les 12 derniers mois :</p>
+        <p class="importantInfo">Gains durant les 12 derniers mois :</p>
         <table class="table table-striped">
             <thead class="table-dark">
                 <tr>
@@ -74,7 +74,7 @@
         </table>
     </div>
     <div class="pt-3">
-        <p>5 dernieres commandes :</p>
+        <p class="importantInfo">5 dernieres commandes :</p>
         <table class="table table-striped">
             <thead class="table-dark">
                 <tr>

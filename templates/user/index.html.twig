@@ -7,11 +7,11 @@
         <table class="table table-striped">
             <thead class="table-dark">
                 <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Nom</th>
-                    <th scope="col">Prenom</th>
-                    <th scope="col">Role</th>
+                    <th scope="col">{{ knp_pagination_sortable(users,"ID","u.id")}}</th>
+                    <th scope="col">{{ knp_pagination_sortable(users,"Email","u.email")}}</th>
+                    <th scope="col">{{ knp_pagination_sortable(users,"Nom","u.firstName")}}</th>
+                    <th scope="col">{{ knp_pagination_sortable(users,"Prenom","u.lastName")}}</th>
+                    <th scope="col">{{ knp_pagination_sortable(users,"Roles","u.roles")}}</th>
                 </tr>
             </thead>
             <tbody>
@@ -26,5 +26,8 @@
                 {% endfor %}
             </tbody>
         </table>
+        <div class="navigation">
+            {{ knp_pagination_render(users) }}
+        </div>
 </div>
 {% endblock %}

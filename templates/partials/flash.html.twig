@@ -1,0 +1,5 @@
+{% for type, messages in app.flashes %}
+    <div class="alert alert-{{type}} mx-5 px-5 m-2">
+        {{ messages|join(". ") }}
+    </div>
+{% endfor %}

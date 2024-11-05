@@ -7,16 +7,14 @@
         <table class="table table-striped">
             <thead class="table-dark">
                 <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Reference</th>
-                    <th scope="col">Date</th>
-                    <th scope="col">Status</th>
+                    <th scope="col">{{ knp_pagination_sortable(orders,"Reference","o.reference")}}</th>
+                    <th scope="col">{{ knp_pagination_sortable(orders,"date","o.createdAt")}}</th>
+                    <th scope="col">{{ knp_pagination_sortable(orders,"status","o.status")}}</th>
                 </tr>
             </thead>
             <tbody>
-                {% for key, order in orders %}
+                {% for order in orders %}
                     <tr>
-                        <th scope="row">{{key + 1}}</th>
                         <td>{{order.reference}}</td>
                         <td>{{order.createdAt|date('d/m/Y')}}</td>
                         <td>{{order.status.value}}</td>
@@ -24,5 +22,8 @@
                 {% endfor %}
             </tbody>
         </table>
+        <div class="navigation">
+            {{ knp_pagination_render(orders) }}
+        </div>
 </div>
 {% endblock %}
