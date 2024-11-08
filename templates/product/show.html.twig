@@ -1,5 +1,8 @@
-{% extends 'base.html.twig' %}
-{% block title %}Description!{% endblock %}
+{% extends is_granted("ROLE_ADMIN")
+    ? 'dashboard/index.html.twig'
+    : 'base.html.twig' %}
+
+{% block title %}Description{% endblock %}
 {% block body %}
 {% include 'partials/flash.html.twig' %}
 <div class="information">
@@ -31,7 +34,6 @@
                         </button>
                     </form>
                 </div>
-
             {% elseif (product.status.value != "Non Disponible") and is_granted("ROLE_USER") %}
                 <button type="button" class="btn btn-secondary d-flex gap-5">
                     <div>Commander</div>

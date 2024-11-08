@@ -21,6 +21,12 @@ body {
 }
 
 .product-image {
+  width: 17vw;
+  height: 17vw;
+  margin: 0.5vw;
+}
+
+.product:hover .product-image {
   width: 18vw;
   height: 18vw;
   margin: auto;

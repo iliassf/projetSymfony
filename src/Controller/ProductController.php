@@ -41,7 +41,7 @@ class ProductController extends AbstractController
         $page = $request->query->getInt('page',1);
         $product = $ProductRepository->paginateProduct($page);
 
-        return $this->render('manageProduct.html.twig', [
+        return $this->render('home.html.twig', [
             'product' => $product,
         ]);
     }
@@ -133,7 +133,7 @@ class ProductController extends AbstractController
             $this->addFlash('danger','Le produit ne peut pas être supprimé.');
         }
 
-        return $this->redirectToRoute('manageProduct');
+        return $this->redirectToRoute('home');
     }
 
 

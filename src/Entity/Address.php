@@ -6,6 +6,7 @@ use App\Repository\AddressRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: AddressRepository::class)]
 class Address
@@ -15,15 +16,19 @@ class Address
     #[ORM\Column]
     private ?int $id = null;
 
+    #[Assert\NotBlank]
     #[ORM\Column(length: 255)]
     private ?string $street = null;
 
+    #[Assert\NotBlank]
     #[ORM\Column]
     private ?string $postalCode = null;
 
+    #[Assert\NotBlank]
     #[ORM\Column(length: 255)]
     private ?string $city = null;
 
+    #[Assert\NotBlank]
     #[ORM\Column(length: 255)]
     private ?string $country = null;
 
@@ -55,7 +60,7 @@ class Address
         return $this->street;
     }
 
-    public function setStreet(string $street): static
+    public function setStreet(?string $street): static
     {
         $this->street = $street;
 
@@ -67,7 +72,7 @@ class Address
         return $this->postalCode;
     }
 
-    public function setPostalCode(string $postalCode): static
+    public function setPostalCode(?string $postalCode): static
     {
         $this->postalCode = $postalCode;
 
@@ -79,7 +84,7 @@ class Address
         return $this->city;
     }
 
-    public function setCity(string $city): static
+    public function setCity(?string $city): static
     {
         $this->city = $city;
 
@@ -91,7 +96,7 @@ class Address
         return $this->country;
     }
 
-    public function setCountry(string $country): static
+    public function setCountry(?string $country): static
     {
         $this->country = $country;
 

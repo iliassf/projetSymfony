@@ -2,17 +2,18 @@
 
 namespace App\Form;
 
-use App\Entity\Brand;
 use App\Entity\Category;
-use App\Entity\Image;
 use App\Entity\Product;
 use App\Enum\Available;
+
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\EnumType;
+use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 
 class ProductType extends AbstractType
 {
@@ -20,7 +21,7 @@ class ProductType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('price')
+            ->add('price',MoneyType::class)
             ->add('description')
             ->add('stock')
             ->add('status', EnumType::class,["class"=>Available::class])
