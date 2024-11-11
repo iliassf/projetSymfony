@@ -36,6 +36,14 @@ body {
   margin: 0;
 }
 
+/*********************** PANIER *****************************/
+
+.cart-product-image {
+  width: 8vw;
+  height: 8vw;
+  margin: 0.5vw;
+}
+
 /*********************** DESCRIPTION *****************************/
 
 .information {

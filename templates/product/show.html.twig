@@ -23,8 +23,8 @@
         <p>Quantité en stock : <b class="importantInfo">{{product.stock}}</b></p>
         <p>Status : <b class="importantInfo">{{product.status.value}}</b></p>
             {% if is_granted("ROLE_ADMIN") %}
-                <div class="d-flex gap-5">
-                    <a type="button" class="btn btn-secondary d-flex" href="{{ path('product.edit', {id: product.id}) }}">
+                <div class="d-flex gap-5 p-0">
+                    <a type="button" class="btn btn-secondary" href="{{ path('product.edit', {id: product.id}) }}">
                         Modifier
                     </a>
                     <form action="{{ path('product.remove', {id: product.id}) }}" method="post">
@@ -35,10 +35,13 @@
                     </form>
                 </div>
             {% elseif (product.status.value != "Non Disponible") and is_granted("ROLE_USER") %}
-                <button type="button" class="btn btn-secondary d-flex gap-5">
-                    <div>Commander</div>
-                    <div class="p-0">{{product.price}} €</div>
-                </button>
+                <form action="{{ path('cart.add', {id: product.id}) }}" method="post">
+                    <input class="form-control w-25 mb-3" id="number" type="number" value="1" min="1" max="{{product.stock}}" name="nb"/>
+                    <button type="submit" class="btn btn-secondary d-flex gap-5">
+                        <div>Commander</div>
+                        <div class="p-0">{{product.price}} €</div>
+                    </button>
+                </form>
             {% endif %}
     </div>
 </div>
