@@ -20,11 +20,16 @@
                                 </div>
                         </div>
                 {% endfor %}
+                {% if cart|length == 0 %}
+                        <h4>Votre panier est vide...</h4>
+                {% endif %}
         </div>
-        <div class="p-5 bg-light border-start">
-                <h1 class="mb-5">Récapitulatif</h1>
-                <p>Sous total : ?</p>
-                <button type="button" class="btn btn-primary">Passer au paiement</button>
-        </div>
+        {% if cart|length > 0 %}
+                <div class="p-5 bg-light border-start">
+                        <h1 class="mb-5">Récapitulatif</h1>
+                        <p>Sous total : ?</p>
+                        <button type="button" class="btn btn-primary">Passer au paiement</button>
+                </div>
+        {% endif %}
 </div>
 {% endblock %}

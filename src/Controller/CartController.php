@@ -24,9 +24,10 @@ class CartController extends AbstractController
         ]);
     }
     
-    #[Route('/addToCart/{id}', name: 'cart.add')]
-    public function addToCart($id, SessionInterface $session): Response
+    #[Route('/addToCart', name: 'cart.add')]
+    public function addToCart(SessionInterface $session): Response
     {
+        $id = isset($_POST['id'])?$_POST['id']:null;
         $nb = isset($_POST['nb'])?$_POST['nb']:1;
 
         $panier = $session->get('panier',[]);

@@ -1,22 +1,16 @@
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-between">
   <a class="navbar-brand" href="/">Parfumerie Online</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
+  <div class="px-3" id="navbarNav">
     <ul class="navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link" href="/home">Accueil</a>
+        <a class="nav-link" href="/cart">{{ ux_icon('bi:basket',{width:'30px'}) }}</a>
       </li>
-        {% if is_granted('ROLE_USER') %}
-            <li class="nav-item active"><a class="nav-link" href="/logout">Deconnexion</a></li>
-        {% else %}
-            <li class="nav-item active"><a class="nav-link" href="/login">Connexion</a></li>
-        {% endif %}
-      <li class="nav-item active">
-        <a class="nav-link" href="/cart">Panier</a>
-      </li>
+      {% if is_granted('ROLE_USER') %}
+        <li class="nav-item active"><a class="nav-link" href="/logout">{{ ux_icon('bi:door-open',{width:'30px'}) }}</a></li>
+      {% else %}
+        <li class="nav-item active"><a class="nav-link" href="/login">{{ ux_icon('bi:person',{width:'30px'}) }}</a></li>
+      {% endif %}
     </ul>
   </div>
 </nav>

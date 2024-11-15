@@ -35,8 +35,8 @@
                     </form>
                 </div>
             {% elseif (product.status.value != "Non Disponible") and is_granted("ROLE_USER") %}
-                <form action="{{ path('cart.add', {id: product.id}) }}" method="post">
-                    <input class="form-control w-25 mb-3" id="number" type="number" value="1" min="1" max="{{product.stock}}" name="nb"/>
+                <form id="addToCartForm" data-product-id="{{ product.id }}">
+                    <input class="form-control w-25 mb-3" id="number" type="number" value="1" min="1" max="{{product.stock}}" name="quantity"/>
                     <button type="submit" class="btn btn-secondary d-flex gap-5">
                         <div>Commander</div>
                         <div class="p-0">{{product.price}} €</div>
@@ -45,4 +45,6 @@
             {% endif %}
     </div>
 </div>
+
+    <script src="{{ asset('js/addToCart.js') }}"></script>
 {% endblock %}
