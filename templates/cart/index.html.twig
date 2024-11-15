@@ -3,19 +3,19 @@
 {% block title %}Panier{% endblock %}
 
 {% block body %}
-<div class="px-5 py-3 mx-5 d-flex justify-content-between">
+<div class="px-5 py-3 mx-5 d-flex justify-content-between" {{ stimulus_controller('cart') }}>
         <div class="p-5">
                 <h1 class="mb-5">Panier</h1>
 
                 {% for cartElement in cart %}
-                        <div class="d-flex mb-4">
+                        <div class="d-flex mb-4" {{ stimulus_controller('cart', {productId: cartElement.product.id}) }}>
                                 <div class="backgroundImage cart-product-image" style="background-image: url('{{ cartElement.product.image.url }}');"></div>
                                 <div>
                                         <b class="h5"><strong>{{cartElement.product.brand.name}}</strong></b>
                                         <p>{{cartElement.product.name}}</p>
                                         <div class="d-flex gap-3">
-                                                <input class="form-control" id="number" type="number" value="{{cartElement.quantity}}" min="1" max="{{cartElement.product.stock}}"/>
-                                                <a class="link-secondary link-offset-2 link-underline link-underline-opacity-0 my-auto" href="">Supprimer</a>
+                                                <input class="form-control" id="number" type="number" value="{{cartElement.quantity}}" min="1" max="{{cartElement.product.stock}}" {{ stimulus_action('cart','modifyElementFromCart','change') }}/>
+                                                <a class="link-secondary link-offset-2 link-underline link-underline-opacity-0 my-auto" {{ stimulus_action('cart','deleteFromCart','click') }}>Supprimer</a>
                                         </div>
                                 </div>
                         </div>

@@ -5,7 +5,7 @@
 {% block title %}Description{% endblock %}
 {% block body %}
 {% include 'partials/flash.html.twig' %}
-<div class="information">
+<div class="information" {{ stimulus_controller('cart', {productId: product.id}) }}>
     <div class="backgroundImage" style="background-image: url('{{ product.image.url }}');"></div>
     <div>
         <h1>{{product.name}}</h1>
@@ -35,10 +35,10 @@
                     </form>
                 </div>
             {% elseif (product.status.value != "Non Disponible") and is_granted("ROLE_USER") %}
-                <form id="addToCartForm" data-product-id="{{ product.id }}">
-                    <input class="form-control w-25 mb-3" id="number" type="number" value="1" min="1" max="{{product.stock}}" name="quantity"/>
+                <form id="addToCartForm" {{ stimulus_action("cart","addToCart","submit") }}>
+                    <input class="form-control w-25 mb-3" id="number" type="number" value="1" min="1" max="{{product.stock}}" name="quantity" data-cart-target="quantity"/>
                     <button type="submit" class="btn btn-secondary d-flex gap-5">
-                        <div>Commander</div>
+                        <div>Ajouter au panier</div>
                         <div class="p-0">{{product.price}} €</div>
                     </button>
                 </form>
@@ -46,5 +46,4 @@
     </div>
 </div>
 
-    <script src="{{ asset('js/addToCart.js') }}"></script>
 {% endblock %}
