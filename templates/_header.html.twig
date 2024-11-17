@@ -3,8 +3,9 @@
   <a class="navbar-brand" href="/">Parfumerie Online</a>
   <div class="px-3" id="navbarNav">
     <ul class="navbar-nav">
-      <li class="nav-item active">
+      <li class="nav-item active d-flex align-items-center mx-3">
         <a class="nav-link" href="/cart">{{ ux_icon('bi:basket',{width:'30px'}) }}</a>
+        <p class="cartSize">0</p>
       </li>
       {% if is_granted('ROLE_USER') %}
         <li class="nav-item active"><a class="nav-link" href="/logout">{{ ux_icon('bi:door-open',{width:'30px'}) }}</a></li>
