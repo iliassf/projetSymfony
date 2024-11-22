@@ -15,9 +15,6 @@ use App\Entity\Product;
 use App\Form\ProductType;
 use Doctrine\ORM\EntityManagerInterface;
 
-use App\Entity\Brand;
-use App\Entity\Image;
-
 class ProductController extends AbstractController
 {
     #[Route('/home', name: 'home')]

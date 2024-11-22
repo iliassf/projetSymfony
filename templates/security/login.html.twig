@@ -6,7 +6,7 @@
 <div class="m-5 px-5">
     <form method="post" class="mb-3">
         {% if error %}
-            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+            <div class="alert alert-danger alert-dismissible fade show mx-5 px-5 m-2" role="alert">{{ error.messageKey|trans(error.messageData, 'security') }} <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close"></button></div>
         {% endif %}
 
         {% if app.user %}

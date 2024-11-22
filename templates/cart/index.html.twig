@@ -29,7 +29,7 @@
                 <div class="p-5 bg-light border-start divRecap">
                         <h1 class="mb-5">Récapitulatif</h1>
                         <p class="sousTotal">Sous total : {{sousTotal}}</p>
-                        <button type="button" class="btn btn-primary">Passer au paiement</button>
+                        <button type="button" class="btn btn-primary" {{ stimulus_action('cart','sendForm','click') }}>Passer au paiement</button>
                 </div>
         {% endif %}
 </div>

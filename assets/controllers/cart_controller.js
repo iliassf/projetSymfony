@@ -68,9 +68,6 @@ export default class extends Controller {
     const productId = this.element.dataset.cartProductIdValue;
     const quantity = event.srcElement.value;
 
-    //console.log(document.getElementsByClassName("sousTotal"));
-    //document.getElementsByClassName("sous-" + productId)[0].textContent = ("bonjour");
-
     fetch("/modifyElementFromCart", {
       method: "POST",
       headers: {
@@ -88,5 +85,23 @@ export default class extends Controller {
         this.changeSousTotal(json.sousTotal);
         this.changeHeaderCartSize(json.cartSize);
       });
+  }
+
+  sendForm(event) {
+    event.preventDefault();
+
+    fetch("/sendOrder", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        "X-Requested-With": "XMLHttpRequest",
+      },
+      body: ``,
+    }).then(() => {
+      let title = document.createElement("h4");
+      title.textContent = "Commande enregistrée";
+      document.getElementsByClassName("divCart")[0].appendChild(title);
+      document.getElementsByClassName("divRecap")[0].style.display = "none";
+    });
   }
 }
