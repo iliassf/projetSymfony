@@ -98,10 +98,19 @@ export default class extends Controller {
       },
       body: ``,
     }).then(() => {
-      let title = document.createElement("h4");
-      title.textContent = "Commande enregistrée";
-      document.getElementsByClassName("divCart")[0].appendChild(title);
       document.getElementsByClassName("divRecap")[0].style.display = "none";
+      let divCart = document.getElementsByClassName("divCart")[0];
+      while (divCart.firstChild) {
+        divCart.removeChild(divCart.firstChild);
+      }
+      let title = document.createElement("h4");
+      title.textContent =
+        "La ParfumerieOnline vous remercie pour votre commande.";
+      document.getElementsByClassName("divCart")[0].appendChild(title);
+      let paragraph = document.createElement("p");
+      paragraph.textContent =
+        "Nos équipes s'en occupent afin que vous la receviez dans les plus brefs délais.";
+      document.getElementsByClassName("divCart")[0].appendChild(paragraph);
     });
   }
 }
