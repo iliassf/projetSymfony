@@ -20,11 +20,11 @@ class ProductController extends AbstractController
     #[Route('/home', name: 'home')]
     public function liste(ProductRepository $ProductRepository,Request $request): Response
     {
-        $page = $request->query->getInt('page',1);
-        $product = $ProductRepository->paginateProduct($page);
+        //$page = $request->query->getInt('page',1);
+        //$product = $ProductRepository->paginateProduct($page);
 
         return $this->render('home.html.twig', [
-            'product' => $product,
+            //'product' => $product,
         ]);
     }
 

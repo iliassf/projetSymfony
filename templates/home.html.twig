@@ -7,25 +7,7 @@
     {% if is_granted("ROLE_ADMIN") %}
         {% include 'partials/flash.html.twig' %}
     {% endif %}
-    <div class="list">
-        {% if is_granted("ROLE_ADMIN") %}
-        <a href="/product/create" class="product">
-            <div class="product-image backgroundImage" style="background-image: url('https://www.creativefabrica.com/wp-content/uploads/2019/05/Add-icon-by-ahlangraphic-1-580x386.jpg')">
-            </div>
-            <b>Ajouter</b>
-        </a>
-        {% endif %}
-        {% for oneProduct in product %}
-                <a href="/product/{{oneProduct.id}}/show" class="product" style="opacity: {{ oneProduct.status.value == 'Non Disponible' ? 0.5 : 1}};">
-                    <div class="product-image backgroundImage" style="background-image: url('{{ oneProduct.image.url }}');">
-                    </div>
-                    <p>{{oneProduct.brand.name}}</p>
-                    <p>{{oneProduct.name}}</p>
-                    <p>{{oneProduct.price}} €</p>
-                </a>
-        {% endfor %}
-    </div>
-    <div class="navigation p-5">
-        {{ knp_pagination_render(product) }}
-    </div>
+    {{ component('ProductSearch') }}
+    
+
 {% endblock %}

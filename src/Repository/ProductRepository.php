@@ -49,4 +49,37 @@ class ProductRepository extends ServiceEntityRepository
             $page, 
             10);
     }
+
+    public function searchPaginator(string $query, int $page): PaginationInterface
+    {
+        $queryBuilder = $this->createQueryBuilder('p')
+            ->select('p');
+    
+        if (!empty(trim($query))) {
+            $queryBuilder->where('LOWER(p.name) LIKE :query')
+                ->setParameter('query', '%' . strtolower($query) . '%');
+        }
+    
+        return $this->paginator->paginate(
+            $queryBuilder,
+            $page,
+            10
+        );
+    }
+
+    public function search(string $query): array
+    {
+        $queryBuilder = $this->createQueryBuilder('p')
+            ->select('p');
+    
+        if (!empty(trim($query))) {
+            $queryBuilder->where('LOWER(p.name) LIKE :query')
+                ->setParameter('query', '%' . strtolower($query) . '%');
+        }
+    
+        return $queryBuilder
+                ->getQuery()
+                ->getResult();
+    }
+    
 }
