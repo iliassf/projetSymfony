@@ -97,20 +97,27 @@ export default class extends Controller {
         "X-Requested-With": "XMLHttpRequest",
       },
       body: ``,
-    }).then(() => {
-      document.getElementsByClassName("divRecap")[0].style.display = "none";
-      let divCart = document.getElementsByClassName("divCart")[0];
-      while (divCart.firstChild) {
-        divCart.removeChild(divCart.firstChild);
+    }).then((Response) => {
+      if (Response.ok) {
+        document.getElementsByClassName("divRecap")[0].style.display = "none";
+        let divCart = document.getElementsByClassName("divCart")[0];
+        while (divCart.firstChild) {
+          divCart.removeChild(divCart.firstChild);
+        }
+        let title = document.createElement("h4");
+        title.textContent =
+          "La ParfumerieOnline vous remercie pour votre commande.";
+        document.getElementsByClassName("divCart")[0].appendChild(title);
+        let paragraph = document.createElement("p");
+        paragraph.textContent =
+          "Nos équipes s'en occupent afin que vous la receviez dans les plus brefs délais.";
+        document.getElementsByClassName("divCart")[0].appendChild(paragraph);
+
+        this.changeHeaderCartSize(0);
+      } else {
+        document.getElementsByClassName("errorMessage")[0].textContent =
+          "L'achat n'a pas pu aboutir...";
       }
-      let title = document.createElement("h4");
-      title.textContent =
-        "La ParfumerieOnline vous remercie pour votre commande.";
-      document.getElementsByClassName("divCart")[0].appendChild(title);
-      let paragraph = document.createElement("p");
-      paragraph.textContent =
-        "Nos équipes s'en occupent afin que vous la receviez dans les plus brefs délais.";
-      document.getElementsByClassName("divCart")[0].appendChild(paragraph);
     });
   }
 }

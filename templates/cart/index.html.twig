@@ -30,6 +30,7 @@
                         <h1 class="mb-5">Récapitulatif</h1>
                         <p class="sousTotal">Sous total : {{sousTotal}}</p>
                         <button type="button" class="btn btn-primary" {{ stimulus_action('cart','sendForm','click') }}>Passer au paiement</button>
+                        <p class="errorMessage text-danger pt-3"></p>
                 </div>
         {% endif %}
 </div>

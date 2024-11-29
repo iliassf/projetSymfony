@@ -17,18 +17,18 @@ class ProductSearch
 
     #[LiveProp(writable: true)]
     public string $query = '';
-    //private RequestStack $requestStack;
-    public function __construct(private ProductRepository $productRepository, /* RequestStack $requestStack*/)
+    private RequestStack $requestStack;
+    public function __construct(private ProductRepository $productRepository, RequestStack $requestStack)
     {
-        //$this->requestStack = $requestStack;
+        $this->requestStack = $requestStack;
     }
 
-    public function getProducts(): array
+    public function getProducts(): PaginationInterface
     {
-        /*
         $request = $this->requestStack->getCurrentRequest();
         $page = $request->query->getInt('page',1);
-        */
-        return $this->productRepository->search($this->query);
+
+        return $this->productRepository->searchPaginator($this->query,$page);
     }
+
 }

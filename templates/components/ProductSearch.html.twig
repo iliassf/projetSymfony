@@ -26,4 +26,7 @@
             <p class="mx-auto">No products found "{{ query }}"</p>
         {% endfor %}
     </div>
+        <div class="navigation">
+            {{ knp_pagination_render(this.products) }}
+        </div>
 </div>

@@ -8,6 +8,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 
 class CartController extends AbstractController
 {
@@ -30,8 +31,12 @@ class CartController extends AbstractController
     }
     
     #[Route('/addToCart', name: 'cart.add')]
-    public function addToCart(SessionInterface $session): JsonResponse
+    public function addToCart(AuthorizationCheckerInterface $authorizationChecker, SessionInterface $session): JsonResponse|Response
     {
+        if (!$authorizationChecker->isGranted('ROLE_USER') || $authorizationChecker->isGranted('ROLE_ADMIN')) {
+            return $this->redirectToRoute('app_dashboard');
+        }
+
         $id = isset($_POST['id'])?$_POST['id']:null;
         $nb = isset($_POST['nb'])?$_POST['nb']:1;
 
@@ -54,8 +59,12 @@ class CartController extends AbstractController
     }
 
     #[Route('/deleteFromCart', name: 'cart.delete')]
-    public function deleteFromCart(SessionInterface $session, ProductRepository $productRepository): JsonResponse
+    public function deleteFromCart(AuthorizationCheckerInterface $authorizationChecker, SessionInterface $session, ProductRepository $productRepository): JsonResponse|Response
     {
+        if (!$authorizationChecker->isGranted('ROLE_USER') || $authorizationChecker->isGranted('ROLE_ADMIN')) {
+            return $this->redirectToRoute('app_dashboard');
+        }
+
         $id = isset($_POST['id'])?$_POST['id']:null;
 
         $panier = $session->get('panier',[]);
@@ -76,8 +85,12 @@ class CartController extends AbstractController
     }
 
     #[Route('/modifyElementFromCart', name: 'cart.modify')]
-    public function modifyToCart(SessionInterface $session, ProductRepository $productRepository): JsonResponse
+    public function modifyToCart(AuthorizationCheckerInterface $authorizationChecker, SessionInterface $session, ProductRepository $productRepository): JsonResponse|Response
     {
+        if (!$authorizationChecker->isGranted('ROLE_USER') || $authorizationChecker->isGranted('ROLE_ADMIN')) {
+            return $this->redirectToRoute('app_dashboard');
+        }
+
         $id = isset($_POST['id'])?$_POST['id']:null;
         $nb = isset($_POST['nb'])?$_POST['nb']:1;
 

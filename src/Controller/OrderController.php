@@ -14,6 +14,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Attribute\Route;
 use App\Enum\Step;
+use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 
 use Doctrine\ORM\EntityManagerInterface;
 
@@ -33,13 +34,25 @@ class OrderController extends AbstractController
 
     #[Route('/sendOrder', name: 'order.send')]
     public function sendOrder(
+        AuthorizationCheckerInterface $authorizationChecker, 
         SessionInterface $session,
         ProductRepository $productRepository,
         EntityManagerInterface $manager
     ): Response {
+        if (!$authorizationChecker->isGranted('ROLE_USER') || $authorizationChecker->isGranted('ROLE_ADMIN')) {
+            return $this->redirectToRoute('app_dashboard');
+        }
+
         $panier = $session->get('panier', []);
     
         if (!empty($panier)) {
+            foreach ($panier as $productId => $quantity) {
+                $product = $productRepository->find($productId);
+                if ($product->getStock() < $quantity || $product->getStatus() == "Non Disponible") {
+                    return new Response('Order not created', 400);
+                }
+            }
+
             $date = new \DateTimeImmutable();
     
             $order = new Order();
@@ -54,7 +67,7 @@ class OrderController extends AbstractController
     
             foreach ($panier as $productId => $quantity) {
                 $product = $productRepository->find($productId);
-                if ($product->getStock() >= $quantity && $product->getStatus() != "Non Disponible") {
+                if ($product->getStock() >= $quantity || $product->getStatus() != "Non Disponible") {
                     $orderItem = new OrderItem();
                     $orderItem->setCommande($order);
                     $orderItem->setProduct($product);

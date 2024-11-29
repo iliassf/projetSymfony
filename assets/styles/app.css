@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
+  font-family: Atacama VAR;
 }
 
 /*********************** PRODUCT *****************************/
@@ -113,7 +113,7 @@ body {
 
 .importantInfo {
   font-weight: bold;
-  color: rgb(255, 130, 151);
+  color: #33383cff;
 }
 
 .backgroundImage {
@@ -127,6 +127,25 @@ body {
 .btn-primary:active,
 .btn-primary:visited,
 .btn-primary:focus {
-  background-color: rgb(255, 130, 151) !important;
-  border-color: rgb(255, 130, 151) !important;
+  background-color: #33383cff !important;
+  border-color: #33383cff !important;
+}
+
+/*********************** CART *****************************/
+.cart {
+  position: relative;
+}
+.cartSize {
+  display: flex;
+  background-color: red;
+  position: absolute;
+  border-radius: 50%;
+  color: white;
+  font-weight: bold;
+  font-size: small;
+  padding: 0px 7px;
+  justify-content: center;
+  text-align: center;
+  top: 0px;
+  left: 25px;
 }
