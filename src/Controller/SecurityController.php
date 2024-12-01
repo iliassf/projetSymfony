@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use Proxies\__CG__\App\Entity\Wallet;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -45,7 +46,9 @@ class SecurityController extends AbstractController
     {
         $user = new User();
         $address = new Address();
+        $wallet = new Wallet();
         $user->setAddress($address);
+        $user->setWallet($wallet);
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
 
@@ -57,6 +60,7 @@ class SecurityController extends AbstractController
             $user->setPassword($userPasswordHasher->hashPassword($user, $plainPassword));
 
             $entityManager->persist($address);
+            $entityManager->persist($wallet);
             $entityManager->persist($user);
             $entityManager->flush();
 

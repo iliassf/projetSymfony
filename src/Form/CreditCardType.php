@@ -29,10 +29,6 @@ class CreditCardType extends AbstractType
             ['attr' => [
                 'minlength' => 3,'maxlength' => 3,
             ]])
-            ->add('user', EntityType::class, [
-                'class' => User::class,
-                'choice_label' => 'id',
-            ])
         ;
     }
 

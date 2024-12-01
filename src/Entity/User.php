@@ -61,6 +61,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(targetEntity: CreditCard::class, mappedBy: 'user', orphanRemoval: true)]
     private Collection $creditCards;
 
+    #[ORM\OneToOne(cascade: ['persist', 'remove'])]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Wallet $wallet = null;
+
     public function __construct()
     {
         $this->commande = new ArrayCollection();
@@ -234,6 +238,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
                 $creditCard->setUser(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getWallet(): ?Wallet
+    {
+        return $this->wallet;
+    }
+
+    public function setWallet(Wallet $wallet): static
+    {
+        $this->wallet = $wallet;
 
         return $this;
     }

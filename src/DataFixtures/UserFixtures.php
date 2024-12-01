@@ -4,6 +4,7 @@ namespace App\DataFixtures;
 
 use App\Entity\User;
 use App\Entity\Address;
+use App\Entity\Wallet;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Faker\Factory;
@@ -29,6 +30,7 @@ class UserFixtures extends Fixture
         $user->setFirstName("Jean");
         $user->setLastName("Dujardin");
         $user->setRoles(["ROLE_ADMIN"]);
+        $user->setWallet(new Wallet());
         $user->setPassword($this->hasher->hashPassword($user,"test"));
         
         $address = new Address();
@@ -50,6 +52,7 @@ class UserFixtures extends Fixture
         $user2->setFirstName("Vincent");
         $user2->setLastName("Cassel");
         $user2->setRoles(["ROLE_USER"]);
+        $user2->setWallet(new Wallet());
         $user2->setPassword($this->hasher->hashPassword($user2,"test"));
         
         $address2 = new Address();

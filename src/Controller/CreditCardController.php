@@ -18,13 +18,15 @@ class CreditCardController extends AbstractController
     public function index(Request $request, EntityManagerInterface $entityManager, WalletRepository $walletRepository): Response
     {
         $user = $this->getUser();
-        $wallet = $walletRepository->findAll()[0];
+        $wallet = $user->getWallet();
         $form = $this->createForm(WalletType::class, $wallet);
         
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-
+            foreach($wallet->getCreditCards() as $creditCard){
+                $creditCard->setUser($user);
+            }
             $entityManager->persist($wallet);
             $entityManager->flush();
             
