@@ -149,3 +149,43 @@ body {
   top: 0px;
   left: 25px;
 }
+
+/*********************** CARROUSEL *****************************/
+.tales {
+  width: 100%;
+}
+.carousel-inner {
+  width: 100%;
+  height: 80vh;
+}
+
+/*********************** CATEGORY *****************************/
+.category {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 0 2vw;
+}
+.category div {
+  height: 80vh;
+  width: 30vw;
+}
+
+.category .man {
+  background-image: url("https://media.licdn.com/dms/image/v2/D4E12AQHgM83NoTPXeg/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1726872278686?e=2147483647&v=beta&t=YhBthLodNIv79jKoKkioqGBbcS-ZgpQkXee6P6gUKk8");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+.category .woman {
+  background-image: url("https://media.licdn.com/dms/image/v2/D4E12AQHgM83NoTPXeg/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1726872278686?e=2147483647&v=beta&t=YhBthLodNIv79jKoKkioqGBbcS-ZgpQkXee6P6gUKk8");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.category .mixte {
+  background-image: url("https://media.licdn.com/dms/image/v2/D4E12AQHgM83NoTPXeg/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1726872278686?e=2147483647&v=beta&t=YhBthLodNIv79jKoKkioqGBbcS-ZgpQkXee6P6gUKk8");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
