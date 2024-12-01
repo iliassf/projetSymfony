@@ -2,21 +2,24 @@
 
 namespace App\Controller;
 
-use App\Entity\Wallet;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\HttpFoundation\Request;
-use App\Form\CreditCardType;
 use App\Form\WalletType;
 use App\Repository\WalletRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 
 class CreditCardController extends AbstractController
 {
     #[Route('/credit/card', name: 'app_credit_card')]
-    public function index(Request $request, EntityManagerInterface $entityManager, WalletRepository $walletRepository): Response
+    public function index(AuthorizationCheckerInterface $authorizationChecker, Request $request, EntityManagerInterface $entityManager, WalletRepository $walletRepository): Response
     {
+        if (!$authorizationChecker->isGranted('ROLE_USER') || $authorizationChecker->isGranted('ROLE_ADMIN')) {
+            return $this->redirectToRoute('home');
+        }
+
         $user = $this->getUser();
         $wallet = $user->getWallet();
         $form = $this->createForm(WalletType::class, $wallet);
@@ -29,8 +32,6 @@ class CreditCardController extends AbstractController
             }
             $entityManager->persist($wallet);
             $entityManager->flush();
-            
-            $this->addFlash('success', 'Les modifications ont été enregistrées');
         }
 
         return $this->render('credit_card/index.html.twig', [
