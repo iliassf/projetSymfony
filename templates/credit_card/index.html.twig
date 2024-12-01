@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}My Wallet{% endblock %}
+
+{% block body %}
+    <div class="mx-5 p-5">
+        <h1>Mon portefeuille</h1>
+
+        {% include 'partials/flash.html.twig' %}
+
+        {{ form(form) }}
+    </div>
+{% endblock %}
