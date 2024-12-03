@@ -9,14 +9,27 @@ use Faker\Factory;
 
 class BrandFixtures extends Fixture
 {
+    public const BRANDS = [
+        'Chanel',
+        'Dior',
+        'Gucci',
+        'Yves Saint Laurent',
+        'Calvin Klein',
+        'Givenchy',
+        'Tom Ford',
+        'Versace',
+        'Hugo Boss',
+        'Burberry',
+        'Lancôme'
+    ];
     public function load(ObjectManager $manager)
     {
-        $faker = Factory::create();
-
-        for ($i = 0; $i < 5; $i++) {
+        foreach (self::BRANDS as $key => $brandName) {
             $brand = new Brand();
-            $brand->setName($faker->company);
+            $brand->setName($brandName);
             $manager->persist($brand);
+
+            $this->addReference('brand_' . $key, $brand);
         }
 
         $manager->flush();

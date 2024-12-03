@@ -32,16 +32,8 @@ class UserFixtures extends Fixture
         $user->setRoles(["ROLE_ADMIN"]);
         $user->setWallet(new Wallet());
         $user->setPassword($this->hasher->hashPassword($user,"test"));
-        
-        $address = new Address();
-        $address->setStreet("rue taison");
-        $address->setPostalCode(57000);
-        $address->setCity("Metz");
-        $address->setCountry("France");
-        
-        $manager->persist($address);
 
-        $user->setAddress($address);
+        $user->setAddress($this->getReference("address_1"));
         
         $manager->persist($user);
 
@@ -54,16 +46,8 @@ class UserFixtures extends Fixture
         $user2->setRoles(["ROLE_USER"]);
         $user2->setWallet(new Wallet());
         $user2->setPassword($this->hasher->hashPassword($user2,"test"));
-        
-        $address2 = new Address();
-        $address2->setStreet("rue taison");
-        $address2->setPostalCode(57000);
-        $address2->setCity("Metz");
-        $address2->setCountry("France");
-        
-        $manager->persist($address2);
 
-        $user2->setAddress($address2);
+        $user2->setAddress($this->getReference("address_1"));
         
         $manager->persist($user2);
 
