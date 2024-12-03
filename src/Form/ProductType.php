@@ -2,6 +2,7 @@
 
 namespace App\Form;
 
+use App\Entity\Brand;
 use App\Entity\Category;
 use App\Entity\Product;
 use App\Enum\Available;
@@ -25,7 +26,9 @@ class ProductType extends AbstractType
             ->add('description')
             ->add('stock')
             ->add('status', EnumType::class,["class"=>Available::class])
-            ->add('brand', BrandType::class, [
+            ->add('brand', EntityType::class, [
+                'class' => Brand::class,
+                'choice_label' => 'name',
             ])
             ->add('image', ImageType::class, [
             ])
