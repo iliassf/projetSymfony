@@ -12,7 +12,7 @@
                                 <div>
                                         <b class="h5"><strong>{{cartElement.product.brand.name}}</strong></b>
                                         <p>{{cartElement.product.name}}</p>
-                                        <p class="sous-{{cartElement.product.id}} m-0">{{(cartElement.quantity * cartElement.product.price)}} €</p>
+                                        <p class="sous-{{cartElement.product.id}} m-0">{{ (cartElement.quantity * cartElement.product.price) | round(2, 'floor') }} €</p>
                                         <p class="m-0">{{(cartElement.product.stock)}} en stock</p>
                                         <div class="d-flex gap-3">
                                                 <input class="form-control" id="number" type="number" value="{{cartElement.quantity}}" min="1" max="{{cartElement.product.stock}}" {{ stimulus_action('cart','modifyElementFromCart','change') }}/>
@@ -28,7 +28,7 @@
         {% if cart|length > 0 %}
                 <div class="p-5 bg-light border-start divRecap">
                         <h1 class="mb-5">Récapitulatif</h1>
-                        <p class="sousTotal">Sous total : {{sousTotal}}</p>
+                        <p class="sousTotal">Sous total : {{sousTotal | round(2, 'floor')}} €</p>
                         <button type="button" class="btn btn-primary" {{ stimulus_action('cart','sendForm','click') }}>Passer au paiement</button>
                         <p class="errorMessage text-danger pt-3"></p>
                 </div>

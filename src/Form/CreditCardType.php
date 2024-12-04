@@ -10,6 +10,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Validator\Constraints as Assert;
 
 class CreditCardType extends AbstractType
 {
@@ -19,6 +20,13 @@ class CreditCardType extends AbstractType
             ->add('number',TextType::class,
             ['attr' => [
                 'minlength' => 16,'maxlength' => 16,
+                ],
+            'constraints' => [
+                new Assert\Length([
+                    'min' => 16,
+                    'max' => 16,
+                    'exactMessage' => 'Le CVV doit contenir exactement 3 caractères.',
+                ])
             ]])
             ->add('expirationDate',  DateType::class, [
                 'widget' => 'choice',
@@ -28,6 +36,13 @@ class CreditCardType extends AbstractType
             ->add('cvv',TextType::class,
             ['attr' => [
                 'minlength' => 3,'maxlength' => 3,
+            ],
+            'constraints' => [
+                new Assert\Length([
+                    'min' => 3,
+                    'max' => 3,
+                    'exactMessage' => 'Le CVV doit contenir exactement 3 caractères.',
+                ])
             ]])
         ;
     }

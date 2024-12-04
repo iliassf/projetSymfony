@@ -48,7 +48,7 @@ class OrderController extends AbstractController
         if (!empty($panier)) {
             foreach ($panier as $productId => $quantity) {
                 $product = $productRepository->find($productId);
-                if ($product->getStock() < $quantity || $product->getStatus() == "Non Disponible") {
+                if ($product->getStock() <= $quantity || $product->getStatus() == "Non Disponible" || $quantity <= 0) {
                     return new Response('Order not created', 400);
                 }
             }

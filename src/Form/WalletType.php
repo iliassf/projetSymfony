@@ -17,6 +17,7 @@ class WalletType extends AbstractType
             ->add('creditCards',CollectionType::class, [
                 'entry_type' => CreditCardType::class,
                 'allow_add' => true,
+                'label' => false,
                 'allow_delete' => true,
                 'by_reference' => false,
                 'entry_options' => ["label"=>false],

@@ -7,7 +7,7 @@ export default class extends Controller {
 
   changeSousTotal(sousTotal) {
     document.getElementsByClassName("sousTotal")[0].textContent =
-      sousTotal + " €";
+      "Sous total : " + Math.trunc(sousTotal * 100) / 100 + " €";
   }
 
   addToCart(event) {
@@ -81,7 +81,7 @@ export default class extends Controller {
       })
       .then((json) => {
         document.getElementsByClassName("sous-" + productId)[0].textContent =
-          json.sousProduct + " €";
+          Math.trunc(json.sousProduct * 100) / 100 + " €";
         this.changeSousTotal(json.sousTotal);
         this.changeHeaderCartSize(json.cartSize);
       });

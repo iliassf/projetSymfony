@@ -14,7 +14,7 @@ use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 class CreditCardController extends AbstractController
 {
     #[Route('/credit/card', name: 'app_credit_card')]
-    public function index(AuthorizationCheckerInterface $authorizationChecker, Request $request, EntityManagerInterface $entityManager, WalletRepository $walletRepository): Response
+    public function index(AuthorizationCheckerInterface $authorizationChecker, Request $request, EntityManagerInterface $entityManager): Response
     {
         if (!$authorizationChecker->isGranted('ROLE_USER') || $authorizationChecker->isGranted('ROLE_ADMIN')) {
             return $this->redirectToRoute('home');
