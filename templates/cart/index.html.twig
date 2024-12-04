@@ -11,8 +11,8 @@
                                 <div class="backgroundImage cart-product-image" style="background-image: url('{{ cartElement.product.image.url }}');"></div>
                                 <div>
                                         <b class="h5"><strong>{{cartElement.product.brand.name}}</strong></b>
-                                        <p>{{cartElement.product.name}}</p>
-                                        <p class="sous-{{cartElement.product.id}} m-0">{{ (cartElement.quantity * cartElement.product.price) | round(2, 'floor') }} €</p>
+                                        <p class="m-0">{{cartElement.product.name}}</p>
+                                        <p class="sous-{{cartElement.product.id}} my-2">{{ (cartElement.quantity * cartElement.product.price) | round(2, 'floor') }} €</p>
                                         <p class="m-0">{{(cartElement.product.stock)}} en stock</p>
                                         <div class="d-flex gap-3">
                                                 <input class="form-control" id="number" type="number" value="{{cartElement.quantity}}" min="1" max="{{cartElement.product.stock}}" {{ stimulus_action('cart','modifyElementFromCart','change') }}/>

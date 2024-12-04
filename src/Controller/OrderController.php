@@ -48,7 +48,7 @@ class OrderController extends AbstractController
         if (!empty($panier)) {
             foreach ($panier as $productId => $quantity) {
                 $product = $productRepository->find($productId);
-                if ($product->getStock() <= $quantity || $product->getStatus() == "Non Disponible" || $quantity <= 0) {
+                if ($product->getStock() < $quantity || $product->getStatus() == "Non Disponible" || $quantity <= 0) {
                     return new Response('Order not created', 400);
                 }
             }
@@ -67,7 +67,6 @@ class OrderController extends AbstractController
     
             foreach ($panier as $productId => $quantity) {
                 $product = $productRepository->find($productId);
-                if ($product->getStock() >= $quantity || $product->getStatus() != "Non Disponible") {
                     $orderItem = new OrderItem();
                     $orderItem->setCommande($order);
                     $orderItem->setProduct($product);
@@ -82,8 +81,8 @@ class OrderController extends AbstractController
                         $product->setStatus(Available::NonDisponible);
                     }
                     $manager->persist($product);
-                }
             }
+        
     
             $manager->flush();
     

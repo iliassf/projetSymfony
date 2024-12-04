@@ -66,7 +66,12 @@ export default class extends Controller {
     event.preventDefault();
 
     const productId = this.element.dataset.cartProductIdValue;
-    const quantity = event.srcElement.value;
+    const quantity = parseInt(event.srcElement.value, 10);
+
+    if (quantity <= 0) {
+      this.deleteFromCart(event);
+      return;
+    }
 
     fetch("/modifyElementFromCart", {
       method: "POST",
@@ -76,9 +81,7 @@ export default class extends Controller {
       },
       body: `id=${productId}&nb=${quantity}`,
     })
-      .then((Response) => {
-        return Response.json();
-      })
+      .then((Response) => Response.json())
       .then((json) => {
         document.getElementsByClassName("sous-" + productId)[0].textContent =
           Math.trunc(json.sousProduct * 100) / 100 + " €";
