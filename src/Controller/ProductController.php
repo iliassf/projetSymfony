@@ -89,7 +89,7 @@ class ProductController extends AbstractController
             $em->persist($product);
             $em->flush();
             $this->addFlash('success','Les parfum a été enregistré');
-            return $this->redirectToRoute('manageProduct');
+            return $this->redirectToRoute('home');
         }
 
         return $this->render('product/create.html.twig', [

@@ -25,7 +25,7 @@ class WalletType extends AbstractType
                     'data-controller' => 'credit-card'
                 ]
             ])
-            ->add('submit', SubmitType::class);
+            ->add('submit', SubmitType::class,['label'=>'walletForm.submit']);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

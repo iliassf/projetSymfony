@@ -14,30 +14,35 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\EnumType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class ProductType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('name')
-            ->add('price',MoneyType::class)
-            ->add('description')
-            ->add('stock')
-            ->add('status', EnumType::class,["class"=>Available::class])
+            ->add('name',TextType::class, ['label'=>'productForm.name'])
+            ->add('price',MoneyType::class, ['label'=>'productForm.price'])
+            ->add('description',TextareaType::class, ['label'=>'productForm.description'])
+            ->add('stock',IntegerType::class, ['label'=>'productForm.stock'])
+            ->add('status', EnumType::class,["class"=>Available::class,'label'=>'productForm.status'])
             ->add('brand', EntityType::class, [
                 'class' => Brand::class,
                 'choice_label' => 'name',
+                'label'=>'productForm.brand'
             ])
             ->add('image', ImageType::class, [
+                'label'=>'productForm.image'
             ])
             ->add('category', EntityType::class, [
                 'class' => Category::class,
                 'choice_label' => 'name',
+                'label'=>'productForm.category'
             ])
             ->add('save', SubmitType::class, [
-                'label' => "Envoyer"
+                'label' => 'productForm.save'
             ])
         ;
     }

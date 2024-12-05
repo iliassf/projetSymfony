@@ -2,7 +2,7 @@
     <input
         type="search"
         data-model="query"
-        placeholder="Rechercher un produit" 
+        placeholder={{ 'productSearch.searchInputMessage'|trans }}
         class="form-control m-5 mx-auto w-50 d-flex" 
     >
 
@@ -11,7 +11,7 @@
             <a href="/product/create" class="product">
                 <div class="product-image backgroundImage" style="background-image: url('https://www.creativefabrica.com/wp-content/uploads/2019/05/Add-icon-by-ahlangraphic-1-580x386.jpg')">
                 </div>
-                <b>Ajouter</b>
+                <b>{{ 'productSearch.add'|trans }}</b>
             </a>
         {% endif %}
         {% for oneProduct in this.products %}
@@ -23,6 +23,6 @@
                     <p>{{oneProduct.price}} €</p>
                 </a>
         {% else %}
-            <p class="mx-auto">No products found "{{ query }}"</p>
+            <p class="mx-auto">{{ 'productSearch.noProductsFound'|trans }} "{{ query }}"</p>
         {% endfor %}
 </div>

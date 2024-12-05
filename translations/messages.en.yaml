@@ -1,0 +1,110 @@
+home: Home
+
+walletForm:
+  number: Number
+  expiration: Expiration date
+  year: Year
+  month: Month
+  day: Day
+  submit: Save
+
+footerText: All rights reserved
+
+showProductTemplate:
+  title: Description
+  parfum: Perfume
+  seeMore: See more
+  seeLess: See less
+  leftInStock: Quantity in stock
+  status: Status
+  addToCart: Add to cart
+  modify: Edit
+  delete: Delete
+
+editProductTemplateTitle: Edit product
+
+addProductTemplate:
+  title: Add product
+  subtitle: New Product
+
+productForm:
+  name: "Product name"
+  price: "Price"
+  description: "Description"
+  stock: "Stock quantity"
+  status: "Status"
+  brand: "Brand"
+  image: "Image"
+  category: "Category"
+  save: "Save"
+
+imageForm:
+  url: URL
+
+productSearch:
+  noProductsFound: No products found
+  searchInputMessage: Search for a product
+  add: Add
+
+wallet:
+  title: My wallet
+
+cart:
+  title: Cart
+  stock: In stock
+  empty: Your cart is empty...
+  delete: Delete
+  recap: Summary
+  total: Subtotal
+  paiement: Proceed to checkout
+
+login:
+  title: Login
+  logged: You are logged in as
+  message: Please log in
+  email: Email
+  password: Password
+  remember: Remember me
+  signIn: Sign in
+  register: Register
+  logout: Log out
+
+registerPage:
+  title: Registration
+  personnalInfos: Personal information
+  addressInfos: Address information
+  conditions: Terms and conditions
+
+registerForm:
+  email: Email address
+  firstName: First name
+  lastName: Last name
+  plainPassword: Password
+  agreeTerms: I agree to the terms and conditions
+  save: Register
+
+addressForm:
+  street: Street
+  country: Country
+  city: City
+  postalCode: Postal code
+
+adminHeader:
+  home: Home
+  seeUsers: View users
+  seeOrders: View orders
+  manageProducts: Manage perfumes
+  logout: Log out
+
+adminDashboard:
+  title: Home
+  byCateg: Number by category
+  byStatus: Ratio by status
+  earnings: Earnings in the last 12 months
+  latestOrders: Last 5 orders
+  stats: Statistics
+
+order:
+  reference: Reference
+  date: Date
+  status: Status

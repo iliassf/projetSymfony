@@ -1,0 +1,110 @@
+home: Accueil
+
+walletForm:
+  number: Numéro
+  expiration: Date d'expiration
+  year: annee
+  month: mois
+  day: jours
+  submit: Enregistrer
+
+footerText: Tous droits réservés
+
+showProductTemplate:
+  title: Description
+  parfum: Parfum
+  seeMore: Voir plus
+  seeLess: Voir moins
+  leftInStock: Quantité en stock
+  status: Statut
+  addToCart: Ajouter au panier
+  modify: Modifier
+  delete: Supprimer
+
+editProductTemplateTitle: Modifier un produit
+
+addProductTemplate:
+  title: Ajouter un produit
+  subtitle: Nouveau produit
+
+productForm:
+  name: "Nom du produit"
+  price: "Prix"
+  description: "Description"
+  stock: "Quantité en stock"
+  status: "Statut"
+  brand: "Marque"
+  image: "Image"
+  category: "Catégorie"
+  save: "Enregistrer"
+
+imageForm:
+  url: URL
+
+productSearch:
+  noProductsFound: Aucun produit trouvé
+  searchInputMessage: Rechercher un produit
+  add: Ajouter
+
+wallet:
+  title: Mon portefeuille
+
+cart:
+  title: Panier
+  stock: en stock
+  empty: Votre panier est vide...
+  delete: Supprimer
+  recap: Récapitulatif
+  total: Sout total
+  paiement: Passer au paiement
+
+login:
+  title: Connection
+  logged: Vous êtes connecté en temps que
+  message: Veuillez vous connecter
+  email: Email
+  password: Mot de passe
+  remember: Se souvenir de moi
+  signIn: Se connecter
+  register: S'inscrire
+  logout: Se deconnecter
+
+registerPage:
+  title: Inscription
+  personnalInfos: Informations personnelles
+  addressInfos: Informations de l'adresse
+  conditions: Conditions
+
+registerForm:
+  email: Adresse email
+  firstName: Prénom
+  lastName: Nom de famille
+  plainPassword: Mot de passe
+  agreeTerms: J'accepte les termes et conditions
+  save: S'inscrire
+
+addressForm:
+  street: Rue
+  country: Pays
+  city: Ville
+  postalCode: Code postal
+
+adminHeader:
+  home: Accueil
+  seeUsers: Voir les utilisateurs
+  seeOrders: Voir les commandes
+  manageProducts: Gérer les parfums
+  logout: Deconnexion
+
+adminDashboard:
+  title: Accueil
+  byCateg: Nombre par categorie
+  byStatus: Ratio par status
+  earnings: Gains durant les 12 derniers mois
+  latestOrders: 5 dernieres commandes
+  stats: Statistiques
+
+order:
+  reference: Reference
+  date: Date
+  status: Statut

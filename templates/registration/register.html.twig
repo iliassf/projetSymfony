@@ -1,15 +1,15 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Inscription{% endblock %}
+{% block title %}{{'registerPage.title'|trans}}{% endblock %}
 
 {% block body %}
 <div class="m-5 px-5">
-    <h2 class="importantInfo mb-4">Inscription</h2>
+    <h2 class="importantInfo mb-4">{{'registerPage.title'|trans}}</h2>
 
     {{ form_start(registrationForm) }}
 
     <div class="mb-4 border-top pt-3">
-        <h3>Informations personnelles</h3>
+        <h3>{{'registerPage.personnalInfos'|trans}}</h3>
         {{ form_row(registrationForm.email) }}
         {{ form_row(registrationForm.firstName) }}
         {{ form_row(registrationForm.lastName) }}
@@ -17,12 +17,12 @@
     </div>
 
     <div class="mb-4 border-top pt-3">
-        <h3>Informations d'adresse</h3>
+        <h3>{{'registerPage.addressInfos'|trans}}</h3>
         {{ form_row(registrationForm.address) }}
     </div>
 
     <div class="mb-4 border-top pt-3">
-        <h3>Conditions</h3>
+        <h3>{{'registerPage.conditions'|trans}}</h3>
         {{ form_row(registrationForm.agreeTerms) }}
     </div>
 

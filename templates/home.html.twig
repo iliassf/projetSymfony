@@ -2,7 +2,7 @@
     ? 'dashboard/index.html.twig'
     : 'base.html.twig' %}
 
-{% block title %}Accueil{% endblock %}
+{% block title %}{{'home'|trans}}{% endblock %}
 {% block body %}
     {% if is_granted("ROLE_ADMIN") %}
         {% include 'partials/flash.html.twig' %}

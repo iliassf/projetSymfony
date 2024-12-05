@@ -1,11 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Panier{% endblock %}
+{% block title %}{{'cart.title'|trans}}{% endblock %}
 
 {% block body %}
 <div class="px-5 py-3 mx-5 d-flex justify-content-between" {{ stimulus_controller('cart') }}>
         <div class="p-5 divCart">
-                <h1 class="mb-5">Panier</h1>
+                <h1 class="mb-5">{{'cart.title'|trans}}</h1>
                 {% for cartElement in cart %}
                         <div class="d-flex mb-4" {{ stimulus_controller('cart', {productId: cartElement.product.id}) }}>
                                 <div class="backgroundImage cart-product-image" style="background-image: url('{{ cartElement.product.image.url }}');"></div>
@@ -13,23 +13,23 @@
                                         <b class="h5"><strong>{{cartElement.product.brand.name}}</strong></b>
                                         <p class="m-0">{{cartElement.product.name}}</p>
                                         <p class="sous-{{cartElement.product.id}} my-2">{{ (cartElement.quantity * cartElement.product.price) | round(2, 'floor') }} €</p>
-                                        <p class="m-0">{{(cartElement.product.stock)}} en stock</p>
+                                        <p class="m-0">{{(cartElement.product.stock)}} {{'cart.stock'|trans}}</p>
                                         <div class="d-flex gap-3">
                                                 <input class="form-control" id="number" type="number" value="{{cartElement.quantity}}" min="1" max="{{cartElement.product.stock}}" {{ stimulus_action('cart','modifyElementFromCart','change') }}/>
-                                                <a class="link-secondary link-offset-2 link-underline link-underline-opacity-0 my-auto" {{ stimulus_action('cart','deleteFromCart','click') }}>Supprimer</a>
+                                                <a class="link-secondary link-offset-2 link-underline link-underline-opacity-0 my-auto" {{ stimulus_action('cart','deleteFromCart','click') }}>{{'cart.delete'|trans}}</a>
                                         </div>
                                 </div>
                         </div>
                 {% endfor %}
                 {% if cart|length == 0 %}
-                        <h4>Votre panier est vide...</h4>
+                        <h4>{{'cart.empty'|trans}}</h4>
                 {% endif %}
         </div>
         {% if cart|length > 0 %}
                 <div class="p-5 bg-light border-start divRecap">
-                        <h1 class="mb-5">Récapitulatif</h1>
-                        <p class="sousTotal">Sous total : {{sousTotal | round(2, 'floor')}} €</p>
-                        <button type="button" class="btn btn-primary" {{ stimulus_action('cart','sendForm','click') }}>Passer au paiement</button>
+                        <h1 class="mb-5">{{'cart.recap'|trans}}</h1>
+                        <p class="sousTotal">{{'cart.total'|trans}} : {{sousTotal | round(2, 'floor')}} €</p>
+                        <button type="button" class="btn btn-primary" {{ stimulus_action('cart','sendForm','click') }}>{{'cart.paiement'|trans}}</button>
                         <p class="errorMessage text-danger pt-3"></p>
                 </div>
         {% endif %}
