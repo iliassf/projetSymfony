@@ -5,18 +5,21 @@ namespace App\Repository;
 use App\Entity\OrderItem;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
  * @extends ServiceEntityRepository<OrderItem>
  */
 class OrderItemRepository extends ServiceEntityRepository
 {
-    public function __construct(ManagerRegistry $registry)
+    private TranslatorInterface $translator;
+    public function __construct(ManagerRegistry $registry, TranslatorInterface $translator)
     {
         parent::__construct($registry, OrderItem::class);
+        $this->translator = $translator;
     }
 
-    public function totalAmountByMonth(): array
+    public function totalAmountByMonth(string $language): array
     {
         $endDate = new \DateTimeImmutable("now");
         $startDate = $endDate->modify("-1 year");
@@ -32,12 +35,10 @@ class OrderItemRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
 
-        $monthNames = ["01" => 'Janvier', "02" => 'Fevrier', "03" => 'Mars', "04" => 'Avril', "05" => 'Mai', "06" => 'Juin', 
-            "07" => 'Juillet', "08" => 'Aout', "09" => 'Septembre', "10" => 'Octobre', "11" => 'Novembre', "12" => 'Decembre'];
-
-        foreach ($totalAmountByMonth as &$value) {
-            $value['month'] = $monthNames[substr($value['month'],5)];
-        }
+            foreach ($totalAmountByMonth as &$value) {
+                $month = substr($value['month'], 5); 
+                $value['month'] = $this->translator->trans("months.$month", [], null, $language);
+            }
 
         return $totalAmountByMonth;
     }
