@@ -16,10 +16,23 @@
         <li class="nav-item active">
             <a class="nav-link" href="/home">{{'adminHeader.manageProducts'|trans}}</a>
         </li>
+      <li class="nav-item active me-2">
+        <select name="language" id="languageSelect" class="form-select">
+          <option value="{{ path('change_locale', { '_locale': 'fr' }) }}" {{ app.request.locale == 'fr' ? 'selected' : '' }}>{{'language.french'|trans}}</option>
+          <option value="{{ path('change_locale', { '_locale': 'en' }) }}" {{ app.request.locale == 'en' ? 'selected' : '' }}>{{'language.english'|trans}}</option>
+        </select>
+      </li>
     </ul>
     <span class="navbar-text"><a class="nav-link" href="/logout">{{'adminHeader.logout'|trans}}</a></span>
   </div>
 </nav>
+
+<script>
+  document.getElementById('languageSelect').addEventListener('change', function() {
+    const selectedUrl = this.value;
+    window.location.href = selectedUrl;
+  });
+</script>
 {% endblock %}
 
 {% block body %}

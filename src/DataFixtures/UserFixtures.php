@@ -3,11 +3,9 @@
 namespace App\DataFixtures;
 
 use App\Entity\User;
-use App\Entity\Address;
 use App\Entity\Wallet;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
-use Faker\Factory;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
@@ -16,8 +14,6 @@ class UserFixtures extends Fixture
 {
     private $em;
     private $hasher;
-
-    // Constructor injection
     public function __construct(EntityManagerInterface $em, UserPasswordHasherInterface $hasher)
     {
         $this->em = $em;

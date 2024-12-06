@@ -108,3 +108,7 @@ order:
   reference: Reference
   date: Date
   status: Statut
+
+language:
+  english: Anglais
+  french: Français

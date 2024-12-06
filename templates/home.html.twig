@@ -7,37 +7,7 @@
     {% if is_granted("ROLE_ADMIN") %}
         {% include 'partials/flash.html.twig' %}
     {% endif %}
-     <!-- 
-    <div id="carouselExample" class="carousel slide">
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-        <img src="https://astuces-beaute.sephora.fr/sites/default/files/styles/10_cols_960_y/public/2023-09/JPG-GAULTIER-DIVINE2023_SJP-29180_INTERNATIONAL-FRENCH-POS-VISUAL-CAMPAIGN.jpg?itok=jfuYWSjW" class="d-block w-100 tales" alt="...">
-        </div>
-        <div class="carousel-item">
-        <img src="https://luniversduparfum.wordpress.com/wp-content/uploads/2017/12/pub-parfum-j-adore-dior-2016-2017-charlize-theron.jpg" class="d-block w-100 tales" alt="...">
-        </div>
-        <div class="carousel-item">
-        <img src="https://www.buzzwebzine.fr/wp-content/uploads/2019/09/pub-parfum-Libre-Yves-Saint-Laurent-Dua-Lipa.jpg" class="d-block w-100 tales" alt="...">
-        </div>
-      </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
-    </div>
-    <div class="category d-flex">
-        <div class="woman">
-        </div>
-        <div class="mixte">
-        </div>
-        <div class="man">
-        </div>
-    </div>
-    -->
+
     {{ component('ProductSearch') }}
     
 

@@ -7,7 +7,6 @@ use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Faker\Factory;
 use App\Enum\Step;
-use Doctrine\Bundle\FixturesBundle\FixtureGroupInterface;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 
 class OrderFixtures extends Fixture implements DependentFixtureInterface
@@ -55,7 +54,7 @@ class OrderFixtures extends Fixture implements DependentFixtureInterface
     public function getDependencies()
     {
         return [
-            UserFixtures::class, // Indiquer que OrderFixtures dépend de UserFixtures
+            UserFixtures::class, 
         ];
     }
 }

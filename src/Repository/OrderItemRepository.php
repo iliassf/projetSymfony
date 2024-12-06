@@ -31,8 +31,6 @@ class OrderItemRepository extends ServiceEntityRepository
             ->setParameter('end', $endDate)
             ->getQuery()
             ->getResult();
-        
-        //peut etre faut il le faire pour tous et juste garder les 12 premiers resultats plutot que filtrer par dates
 
         $monthNames = ["01" => 'Janvier', "02" => 'Fevrier', "03" => 'Mars', "04" => 'Avril', "05" => 'Mai', "06" => 'Juin', 
             "07" => 'Juillet', "08" => 'Aout', "09" => 'Septembre', "10" => 'Octobre', "11" => 'Novembre', "12" => 'Decembre'];
